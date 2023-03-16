@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 
-const PhonebooksAuth = () => {
+const NavbarAuth = () => {
   return (
     <div>
       <NavLink to="/register">Register</NavLink>
@@ -9,4 +9,4 @@ const PhonebooksAuth = () => {
   );
 };
 
-export default PhonebooksAuth;
+export default NavbarAuth;
