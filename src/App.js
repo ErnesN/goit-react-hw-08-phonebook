@@ -8,7 +8,7 @@ import { useAuth } from 'shared/hooks/useAuth';
 import Loader from 'components/Loader/Loader';
 
 const HomePage = lazy(() => import('./pages/HomePage'));
-const LoginPage = lazy(() => import('./pages/RegisterPage'));
+const LoginPage = lazy(() => import('./pages/LoginPage'));
 const RegisterPage = lazy(() => import('./pages/RegisterPage'));
 const Phonebook = lazy(() => import('./components/Phonebook/Phonebook'));
 
