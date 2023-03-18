@@ -2,16 +2,17 @@ import { Navigate, Outlet } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 import { getAuth } from 'redux/auth/auth-selector';
+import Loader from 'shared/components/Loader/Loader';
 
 const PublicRoute = () => {
   const { isLogin, token } = useSelector(getAuth);
 
   if (!isLogin && token) {
-    return <p>...Loading</p>;
+    return <Loader />;
   }
 
   if (isLogin) {
-    return <Navigate to="/phonebooks" />;
+    return <Navigate to="/" />;
   }
   return <Outlet />;
 };
