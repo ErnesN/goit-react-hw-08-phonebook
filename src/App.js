@@ -4,6 +4,8 @@ import { Route, Routes } from 'react-router-dom';
 import PrivateRoute from 'modules/PrivateRoute/PrivateRoute';
 import PublicRoute from 'modules/PublicRoute/PublicRoute';
 import Layout from 'modules/Layout/Layout';
+import Loader from 'shared/components/Loader/Loader';
+
 const HomePage = lazy(() => import('./pages/HomePage/HomePage'));
 const LoginPage = lazy(() => import('./pages/LoginPage/LoginPage'));
 const RegisterPage = lazy(() => import('./pages/RegisterPage/RegisterPage'));
@@ -11,7 +13,7 @@ const PhonebookPage = lazy(() => import('./pages/PhonebookPage/PhonebookPage'));
 
 const App = () => {
   return (
-    <Suspense fallback={<p>...Loading</p>}>
+    <Suspense fallback={<Loader />}>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
