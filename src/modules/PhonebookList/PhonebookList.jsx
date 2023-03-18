@@ -11,7 +11,7 @@ import { getFilteredContacts } from 'redux/contacts/contacts-selectors';
 
 import styles from './phonebook-list.module.scss';
 
-export const ContactList = () => {
+export const PhonebookList = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {

@@ -1,6 +1,6 @@
-import PhonebooksForm from 'modules/Phonebooks/PhonebooksForm/PhonebooksForm';
-import PhonebooksFilter from 'modules/Phonebooks/PhonebooksFilter/PhonebooksFilter';
-import PhonebookList from 'modules/Phonebooks/PhonebookList/PhonebookList';
+import PhonebooksForm from 'modules/PhonebooksForm/PhonebooksForm';
+import { PhonebooksFilter } from 'modules/PhonebooksFilter/PhonebooksFilter';
+import { PhonebookList } from 'modules/PhonebookList/PhonebookList';
 
 const PhonebookPage = () => {
   return (
