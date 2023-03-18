@@ -1,26 +1,23 @@
-import PropTypes from 'prop-types';
+import { useSelector, useDispatch } from 'react-redux';
 
 import styles from './phonebooks-filter.module.scss';
 
-const PhonebooksFilter = ({ handleChange, value }) => {
+import { setFilter } from 'redux/filter/filter-slice';
+import { getFilter } from 'redux/filter/filter-selectors';
+
+export const Filter = () => {
+  const filter = useSelector(getFilter);
+  const dispatch = useDispatch();
+
+  const handleFilter = e => {
+    const action = setFilter(e.target.value);
+    dispatch(action);
+  };
+
   return (
-    <div>
-      <h2>Contacts</h2>
-      <div className={styles.formGroup}>
-        <label className={styles.text}>Find contacts by name</label>
-        <input
-          value={value}
-          className={styles.input}
-          name="filter"
-          onChange={handleChange}
-        />
-      </div>
-    </div>
+    <label className={styles.filter}>
+      Find contact
+      <input type="text" value={filter} onChange={handleFilter} />
+    </label>
   );
-};
-
-export default PhonebooksFilter;
-
-PhonebooksFilter.propTypes = {
-  handleChange: PropTypes.func.isRequired,
 };

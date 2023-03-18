@@ -1,17 +1,23 @@
+// .input {
+//     width: 290px;
+//     border-radius: 4px;
+//     border: transparent;
+//     padding: 5px;
+//     margin-bottom: 10px;
 
-.input {
-    width: 290px;
-    border-radius: 4px;
-    border: transparent;
-    padding: 5px;
-    margin-bottom: 10px;
-
-}
-.text {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 10px;
-    color: rgb(70, 10, 139);
-    font-weight: 700;
+// }
+// .text {
+//     text-align: center;
+//     display: flex;
+//     flex-direction: column;
+//     margin-bottom: 10px;
+//     color: rgb(70, 10, 139);
+//     font-weight: 700;
+// }
+.filter {
+  display: flex;
+  gap: 5px;
+  justify-content: flex-start;
+  color: teal;
+  padding: 20px;
 }

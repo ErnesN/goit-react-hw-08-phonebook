@@ -18,3 +18,4 @@ export const getFilteredContacts = ({ contacts, filter }) => {
 
   return result;
 };
+export const getLoadingContacts = ({ contacts }) => contacts.isLoading;

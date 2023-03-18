@@ -1,37 +1,49 @@
-import PropTypes from 'prop-types';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+
+import { getLoadingContacts } from 'redux/contacts/contacts-selectors';
+
+import { PhonebookListItem } from './PhonebookListItem/PhonebookListItem';
+import Loader from 'shared/components/Loader/Loader';
+
+import { fetchContacts } from 'redux/contacts/contacts-operations';
+import { getFilteredContacts } from 'redux/contacts/contacts-selectors';
 
 import styles from './phonebook-list.module.scss';
 
-const PhonebookList = ({ removeContact, contacts }) => {
-  const myContacts = contacts.map(({ _id, name, number }) => (
-    <li key={_id} className={styles.item}>
-      {name}: {number}.
-      <button
-        className={styles.btn}
-        onClick={() => removeContact(_id)}
-        type="button"
-      >
-        Delete
-      </button>
-    </li>
-  ));
+export const ContactList = () => {
+  const dispatch = useDispatch();
 
-  return <ol className={styles.list}>{myContacts}</ol>;
-};
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
 
-export default PhonebookList;
+  const list = useSelector(getFilteredContacts);
+  const isContacts = Boolean(list.length);
 
-PhonebookList.defaultProps = {
-  contacts: [],
-};
+  const loading = useSelector(getLoadingContacts);
 
-PhonebookList.propTypes = {
-  removeContact: PropTypes.func.isRequired,
-  contacts: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      number: PropTypes.string.isRequired,
-    })
-  ),
+  if (loading) {
+    return <Loader />;
+  }
+
+  return (
+    <div className={styles.contactList}>
+      {isContacts && (
+        <ul className={styles.ul}>
+          {list.map(({ id, name, number }) => {
+            return (
+              <PhonebookListItem
+                key={id}
+                name={name}
+                number={number}
+                nameId={id}
+              />
+            );
+          })}
+        </ul>
+      )}
+      {!isContacts && <p className={styles.text}>There are no contacts!</p>}
+    </div>
+  );
 };
