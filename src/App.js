@@ -7,7 +7,7 @@ import Layout from 'modules/Layout/Layout';
 const HomePage = lazy(() => import('./pages/HomePage/HomePage'));
 const LoginPage = lazy(() => import('./pages/LoginPage/LoginPage'));
 const RegisterPage = lazy(() => import('./pages/RegisterPage/RegisterPage'));
-const Phonebook = lazy(() => import('./modules/Phonebooks/Phonebooks'));
+const PhonebookPage = lazy(() => import('./pages/PhonebookPage/PhonebookPage'));
 
 const App = () => {
   return (
@@ -20,7 +20,7 @@ const App = () => {
             <Route path="/login" element={<LoginPage />} />
           </Route>
           <Route element={<PrivateRoute />}>
-            <Route path="/contacts" element={<Phonebook />} />
+            <Route path="/contacts" element={<PhonebookPage />} />
           </Route>
           <Route path="*" element={<HomePage />} />
         </Route>
