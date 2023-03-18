@@ -1,8 +1,8 @@
 import { useEffect, lazy, Suspense } from 'react';
 import { useDispatch } from 'react-redux';
 import { Route, Routes, Outlet } from 'react-router-dom';
-import PrivateRoute from './components/PrivateRoute/PrivateRoute';
-import PublicRoute from './components/PublicRoute/PublicRoute';
+import PrivateRoute from 'modules/PrivateRoute/PrivateRoute';
+import PublicRoute from 'modules/PublicRoute/PublicRoute';
 import { refreshUser } from 'redux/auth/operations';
 import { useAuth } from 'shared/hooks/useAuth';
 import Loader from 'components/Loader/Loader';

@@ -1,22 +1,15 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { Navigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 import { login } from 'shared/services/auth';
-import { isUserLogin } from 'redux/auth/auth-selector';
 
 import LoginForm from 'modules/LoginForm/LoginForm';
 
 const LoginPage = () => {
-  const isLogin = useSelector(isUserLogin);
   const dispatch = useDispatch();
 
   const handleLogin = data => {
     dispatch(login(data));
   };
-
-  if (isLogin) {
-    return <Navigate to="/phonebooks" />;
-  }
 
   return (
     <div className="container">

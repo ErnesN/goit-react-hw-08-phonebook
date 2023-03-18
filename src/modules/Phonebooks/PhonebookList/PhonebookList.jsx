@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import styles from './phonebook-list.module.scss';
 
 const PhonebookList = ({ removeContact, contacts }) => {
-  const myContacts = contacts.map(({ id, name, number }) => (
-    <li key={id} className={styles.item}>
+  const myContacts = contacts.map(({ _id, name, number }) => (
+    <li key={_id} className={styles.item}>
       {name}: {number}.
       <button
         className={styles.btn}
-        onClick={() => removeContact(id)}
+        onClick={() => removeContact(_id)}
         type="button"
       >
         Delete
