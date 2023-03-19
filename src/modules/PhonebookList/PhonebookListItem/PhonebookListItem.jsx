@@ -5,7 +5,7 @@ import { deleteContact } from 'redux/contacts/contacts-operations';
 
 import styles from './phonebook-list-item.module.scss';
 
-const PhonebookListItem = ({ nameId, name, number }) => {
+export const PhonebookListItem = ({ nameId, name, number }) => {
   const dispatch = useDispatch();
 
   const handleDeleteContact = id => {
@@ -29,7 +29,6 @@ const PhonebookListItem = ({ nameId, name, number }) => {
     </li>
   );
 };
-export default PhonebookListItem;
 
 PhonebookListItem.propTypes = {
   nameId: PropTypes.string.isRequired,

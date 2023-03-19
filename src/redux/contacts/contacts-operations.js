@@ -1,14 +1,14 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import * as authApi from 'shared/services/contacts';
+import * as contactsApi from 'shared/services/contactsApi';
 
 export const fetchContacts = createAsyncThunk(
   'contacts/fetchAll',
-  async (_, thunkAPI) => {
+  async (_, { rejectWithValue }) => {
     try {
-      const data = await authApi.getAllContacts();
-      return data;
+      const contacts = await contactsApi.getAllContacts();
+      return contacts;
     } catch ({ response }) {
-      return thunkAPI.rejectWithValue(response.data.message);
+      return rejectWithValue(response.data.message);
     }
   }
 );
@@ -17,28 +17,11 @@ export const addContact = createAsyncThunk(
   'contacts/addContact',
   async (data, { rejectWithValue }) => {
     try {
-      const result = await authApi.addContact(data);
+      const result = await contactsApi.addContact(data);
       return result;
     } catch ({ response }) {
-      return rejectWithValue(response.data);
+      return rejectWithValue(response.data.message);
     }
-  },
-  {
-    condition: ({ name, number }, { getState }) => {
-      const { contacts } = getState();
-      const normalizedTitle = name.toLowerCase();
-      const normalizedAuthor = number.toLowerCase();
-      const result = contacts.items.find(({ name, number }) => {
-        return (
-          name.toLowerCase() === normalizedTitle &&
-          number.toLowerCase() === normalizedAuthor
-        );
-      });
-      if (result) {
-        alert(`${name}: ${number} is already ixist`);
-        return false;
-      }
-    },
   }
 );
 
@@ -46,10 +29,10 @@ export const deleteContact = createAsyncThunk(
   'contacts/deleteContact',
   async (id, { rejectWithValue }) => {
     try {
-      await authApi.deleteContact(id);
+      await contactsApi.deleteContact(id);
       return id;
     } catch ({ response }) {
-      return rejectWithValue(response.data);
+      return rejectWithValue(response.data.massage);
     }
   }
 );

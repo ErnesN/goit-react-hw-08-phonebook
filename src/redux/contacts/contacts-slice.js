@@ -4,15 +4,14 @@ import {
   addContact,
   deleteContact,
 } from './contacts-operations';
-const initialState = {
-  items: [],
-  isLoading: false,
-  error: null,
-};
 
 const contactsSlice = createSlice({
   name: 'contacts',
-  initialState,
+  initialState: {
+    items: [],
+    isLoading: false,
+    error: null,
+  },
   extraReducers: builder => {
     builder
       .addCase(fetchContacts.pending, store => {

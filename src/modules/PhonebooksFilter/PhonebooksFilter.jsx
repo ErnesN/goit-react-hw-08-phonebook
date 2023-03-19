@@ -5,7 +5,7 @@ import styles from './phonebooks-filter.module.scss';
 import { setFilter } from 'redux/filter/filter-slice';
 import { getFilter } from 'redux/filter/filter-selectors';
 
-const PhonebooksFilter = () => {
+export const PhonebooksFilter = () => {
   const filter = useSelector(getFilter);
   const dispatch = useDispatch();
 
@@ -21,4 +21,3 @@ const PhonebooksFilter = () => {
     </label>
   );
 };
-export default PhonebooksFilter;

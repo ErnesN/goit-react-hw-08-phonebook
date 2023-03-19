@@ -18,8 +18,14 @@ export const signup = async userData => {
 };
 
 export const login = async userData => {
-  const { data } = await instance.post('/users/login', userData);
+  const { data } = await instance.post('/users/login/', userData);
   setToken(data.token);
+  return data;
+};
+
+export const logout = async token => {
+  const { data } = await instance.post('/users/logout', token);
+  setToken();
   return data;
 };
 
@@ -32,10 +38,4 @@ export const getCurrent = async token => {
     setToken();
     throw error;
   }
-};
-
-export const logout = async token => {
-  const { data } = await instance.post('/users/logout', token);
-  setToken();
-  return data;
 };

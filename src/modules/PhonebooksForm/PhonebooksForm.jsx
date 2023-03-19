@@ -3,7 +3,7 @@ import styles from './phonebooks-form.module.scss';
 
 import { addContact } from 'redux/contacts/contacts-operations';
 
-const PhonebooksForm = () => {
+export const PhonebooksForm = () => {
   let inputValues = {
     name: '',
     number: '',
@@ -74,4 +74,3 @@ const PhonebooksForm = () => {
     </form>
   );
 };
-export default PhonebooksForm;
