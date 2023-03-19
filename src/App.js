@@ -9,7 +9,9 @@ import Loader from 'shared/components/Loader/Loader';
 const HomePage = lazy(() => import('./pages/HomePage/HomePage'));
 const LoginPage = lazy(() => import('./pages/LoginPage/LoginPage'));
 const RegisterPage = lazy(() => import('./pages/RegisterPage/RegisterPage'));
-const PhonebookPage = lazy(() => import('./pages/PhonebookPage/PhonebookPage'));
+const PhonebooksPage = lazy(() =>
+  import('./pages/PhonebookPage/PhonebooksPage')
+);
 
 const App = () => {
   return (
@@ -22,7 +24,7 @@ const App = () => {
             <Route path="/login" element={<LoginPage />} />
           </Route>
           <Route element={<PrivateRoute />}>
-            <Route path="/contacts" element={<PhonebookPage />} />
+            <Route path="/contacts" element={<PhonebooksPage />} />
           </Route>
           <Route path="*" element={<HomePage />} />
         </Route>

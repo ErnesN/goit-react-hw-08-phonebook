@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { getLoadingContacts } from 'redux/contacts/contacts-selectors';
 
-import { PhonebookListItem } from './PhonebookListItem/PhonebookListItem';
+import PhonebookListItem from './PhonebookListItem/PhonebookListItem';
 import Loader from 'shared/components/Loader/Loader';
 
 import { fetchContacts } from 'redux/contacts/contacts-operations';
@@ -11,7 +11,7 @@ import { getFilteredContacts } from 'redux/contacts/contacts-selectors';
 
 import styles from './phonebook-list.module.scss';
 
-export const PhonebookList = () => {
+const PhonebookList = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -47,3 +47,4 @@ export const PhonebookList = () => {
     </div>
   );
 };
+export default PhonebookList;

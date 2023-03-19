@@ -16,37 +16,39 @@ const contactsSlice = createSlice({
   extraReducers: builder => {
     builder
       .addCase(fetchContacts.pending, store => {
-        store.loading = true;
+        store.isLoading = true;
+        store.error = null;
       })
       .addCase(fetchContacts.fulfilled, (store, { payload }) => {
-        store.loading = false;
+        store.isLoading = false;
         store.items = payload;
       })
       .addCase(fetchContacts.rejected, (store, { payload }) => {
-        store.loading = false;
+        store.isLoading = false;
         store.error = payload;
       })
       .addCase(addContact.pending, store => {
-        store.loading = true;
+        store.isLoading = true;
+        store.error = null;
       })
       .addCase(addContact.fulfilled, (store, { payload }) => {
-        store.loading = false;
+        store.isLoading = false;
         store.items.push(payload);
       })
       .addCase(addContact.rejected, (store, { payload }) => {
-        store.loading = false;
+        store.isLoading = false;
         store.error = payload;
       })
       .addCase(deleteContact.pending, store => {
-        store.loading = true;
+        store.isLoading = true;
+        store.error = null;
       })
       .addCase(deleteContact.fulfilled, (store, { payload }) => {
-        store.loading = false;
-        const index = store.items.findIndex(item => item.id === payload);
-        store.items.splice(index, 1);
+        store.isLoading = false;
+        store.items = store.items.filter(item => item.id !== payload);
       })
       .addCase(deleteContact.rejected, (store, { payload }) => {
-        store.loading = false;
+        store.isLoading = false;
         store.error = payload;
       });
   },
